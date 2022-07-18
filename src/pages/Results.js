@@ -1,6 +1,5 @@
 import {
   Button,
-  Divider,
   List,
   ListItem,
   Typography,
@@ -10,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { handleAnswersSubmit, handleLoadQuestions } from "../redux/actions";
+import { ERROR_RED, GRADIENT, SUCCESS_GREEN } from "../constants";
 
 const Results = () => {
   const dispatch = useDispatch();
@@ -37,21 +37,23 @@ const Results = () => {
                 {question.question}
               </Typography>
             </ListItem>
-
-            <Divider />
             {checkScore(idx) ? (
-              <ListItem key={idx} sx={{ backgroundColor: "#559364" }}>
-                {user_answers[idx]}
+              <>
+              <Typography variant="subtitle2" >Congratz, your answer is correct!!!</Typography>
+              <ListItem key={idx} sx={{ backgroundImage: GRADIENT, color: 'white', fontWeight: 'bold'}}>
+                <div>{user_answers[idx]}</div>
               </ListItem>
+              </>
             ) : (
               <>
-                <ListItem key={idx} sx={{ backgroundColor: "#559364" }}>
-                  {question.correctAnswer}
-                </ListItem>
-                <Divider />
-                <ListItem key={idx} sx={{ backgroundColor: "#DF0113" }}>
+                <Typography variant="subtitle2"  >Your Answer</Typography>
+                <ListItem key={idx} sx={{ backgroundColor: ERROR_RED, color: 'white'}}>
                   {user_answers[idx]}
                 </ListItem>
+                <ListItem key={idx} sx={{ backgroundColor: SUCCESS_GREEN, color: 'white'}}>
+                  {question.correctAnswer}
+                </ListItem>
+                <Typography variant="subtitle2" >Correct Answer</Typography>
               </>
             )}
           </Box>

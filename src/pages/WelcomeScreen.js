@@ -19,7 +19,7 @@ const WelcomeScreen = () => {
       const questions = prepareQuestions(response.results);
       dispatch(handleLoadQuestions(questions));
     }
-  }, [response]);
+  }, [response, dispatch]);
 
   if (loading) {
     return (

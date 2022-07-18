@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem, Select } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,6 @@ const SelectQuestion = () => {
   return (
     <Box width="100%">
       <FormControl size="small" fullWidth>
-        <InputLabel>Select Question</InputLabel>
         <Select value={value} onChange={handleChange}>
           {[...Array(NUMBER_OF_QUESTIONS)].map((_, id) => (
             <MenuItem value={id} key={id}>
